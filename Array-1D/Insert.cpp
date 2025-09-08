@@ -71,6 +71,15 @@ Insert 100 at the 6th position → [1, 2, 3, 4, 5, 100, 6].
 #include<vector>
 using namespace std;
 
+void Insert_optimize(vector<int> &x,int k,int n){
+    x.push_back(0);
+    int s = x.size();
+    int j = 0;
+    for(int i = s-1;i > k-1 ;i--){
+        x[i] = x[i-1];
+    }
+    x[k-1] = n;
+}
 vector<int>  Insert(vector<int> x,int k,int n){
     int s = x.size();
     vector<int> a(s+1);
@@ -95,6 +104,13 @@ int main(){
     cin >> k>>n;
    vector<int> ans = Insert(x,k,n);
 
+   Insert_optimize(x,k,n);
+   
+   for(int i = 0 ;i<x.size();i++){
+       cout<<x[i] <<" ";
+   }
+   cout<<endl;
+   cout<<"HH"<<endl;
     for(int i = 0;i<ans.size();i++){
         cout<<ans[i]<<" ";
     }
